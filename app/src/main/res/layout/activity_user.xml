@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/theme_quiz"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="10dp"
+    tools:context=".UserActivity">
+
+    <TextView
+        android:text="Welcome"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:background="@drawable/navy_blue"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_marginHorizontal="1dp"/>
+
+    <TextView
+        android:id="@+id/uid"
+        android:text="UID"
+        android:textColor="#363eb3"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/light_turquoise"
+        android:layout_marginHorizontal="20dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/wins"
+        android:text="Wins"
+        android:textColor="#363eb3"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:background="@drawable/gold"
+        android:layout_marginHorizontal="20dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/matches"
+        android:text="Matches"
+        android:textColor="#363eb3"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:background="@drawable/gold"
+        android:layout_marginHorizontal="20dp"
+        android:padding="10dp"/>
+
+    <TextView
+        android:id="@+id/win_percent"
+        android:text="Win %"
+        android:textColor="#363eb3"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_width="300dp"
+        android:layout_height="80dp"
+        android:background="@drawable/gold"
+        android:layout_marginHorizontal="20dp"
+        android:padding="10dp"/>
+    
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/start_match"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#64ff2b"
+        android:text="Start Match"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:textColor="#174f02"
+        android:layout_marginTop="100dp"
+        android:layout_marginHorizontal="20dp"/>
+
+</LinearLayout>
