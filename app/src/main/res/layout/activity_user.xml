@@ -37,57 +37,57 @@
         android:padding="10dp"/>
 
     <TextView
-        android:id="@+id/wins"
-        android:text="Wins"
-        android:textColor="#363eb3"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_width="300dp"
+        android:id="@+id/acc_player"
+        android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@drawable/gold"
-        android:layout_marginHorizontal="20dp"
-        android:padding="10dp"/>
+        android:gravity="center"
+        android:layout_margin="10dp"
+        android:padding="10dp"
+        android:text="PlayerUID invited you"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="#362804"
+        android:visibility="gone"/>
 
-    <TextView
-        android:id="@+id/matches"
-        android:text="Matches"
-        android:textColor="#363eb3"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:background="@drawable/gold"
-        android:layout_marginHorizontal="20dp"
-        android:padding="10dp"/>
-
-    <TextView
-        android:id="@+id/win_percent"
-        android:text="Win %"
-        android:textColor="#363eb3"
-        android:textSize="30sp"
-        android:textStyle="bold"
-        android:textAlignment="center"
-        android:gravity="center"
-        android:layout_width="300dp"
-        android:layout_height="80dp"
-        android:background="@drawable/gold"
-        android:layout_marginHorizontal="20dp"
-        android:padding="10dp"/>
-    
     <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/start_match"
+        android:id="@+id/accept"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#ff0022"
+        android:text="Accept Match"
+        android:textColor="#ffffff"
+        android:textSize="30sp"
+        android:textStyle="bold"
+        android:layout_marginTop="5dp"
+        android:layout_marginHorizontal="20dp"
+        android:visibility="gone"/>
+
+    <EditText
+        android:id="@+id/req_player"
+        android:hint="Enter UID of Player"
+        android:textColorHint="@color/black"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/gold"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:textColor="#362804"
+        android:padding="10dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginHorizontal="20dp"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/request"
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#64ff2b"
-        android:text="Start Match"
+        android:text="Request Match"
         android:textSize="30sp"
         android:textStyle="bold"
         android:textColor="#174f02"
-        android:layout_marginTop="100dp"
+        android:layout_marginTop="5dp"
         android:layout_marginHorizontal="20dp"/>
 
 </LinearLayout>

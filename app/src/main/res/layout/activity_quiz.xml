@@ -11,6 +11,19 @@
     tools:context=".QuizActivity">
 
     <TextView
+        android:id="@+id/timer"
+        android:text="00:00"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textColor="#ffffff"
+        android:layout_width="150dp"
+        android:layout_height="80dp"
+        android:background="@drawable/navy_blue"
+        android:gravity="center"
+        android:layout_marginBottom="50dp"
+        android:padding="10dp"/>
+
+    <TextView
         android:id="@+id/question"
         android:text="Question"
         android:textSize="22sp"
