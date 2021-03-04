@@ -36,7 +36,7 @@
         android:layout_weight="1">
 
     <TextView
-        android:id="@+id/uid"
+        android:id="@+id/main_text"
         android:text="UID"
         android:textColor="#363eb3"
         android:textSize="30sp"
@@ -64,7 +64,7 @@
             android:visibility="gone"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/accept"
+            android:id="@+id/accept_btn"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:background="#ff0022"
@@ -85,7 +85,7 @@
         android:layout_weight="1">
 
         <EditText
-            android:id="@+id/req_player"
+            android:id="@+id/main_email"
             android:hint="Enter UID of Player"
             android:textColorHint="@color/black"
             android:layout_width="match_parent"
@@ -99,7 +99,7 @@
             android:layout_marginHorizontal="20dp"/>
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/request"
+            android:id="@+id/request_btn"
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:background="#64ff2b"
