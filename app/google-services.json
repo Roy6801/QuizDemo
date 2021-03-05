@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "418549822601",
+    "firebase_url": "https://quizdemo-a0032-default-rtdb.firebaseio.com",
+    "project_id": "quizdemo-a0032",
+    "storage_bucket": "quizdemo-a0032.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418549822601:android:04d3258e101fc92e420258",
+        "android_client_info": {
+          "package_name": "com.demo.quizdemo"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "418549822601-4pjr7l0lq1m7p7isi2aducmceoojk8bq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.demo.quizdemo",
+            "certificate_hash": "3cd44e38e15371354f2e9bfde28892debe8715f6"
+          }
+        },
+        {
+          "client_id": "418549822601-e03bkhp285r3iailv0u5mm5o3aec0and.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTMt7wE5eQYZgxmUxu_PhGVJFkVhj4r4Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "418549822601-e03bkhp285r3iailv0u5mm5o3aec0and.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

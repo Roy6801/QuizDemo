@@ -3,74 +3,97 @@ package com.demo.quizdemo
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
+import android.widget.Toast
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import kotlinx.android.synthetic.main.activity_user.*
-import java.lang.Exception
 
 class UserActivity : AppCompatActivity() {
     private  var database = FirebaseDatabase.getInstance()
     private var myRef = database.reference
     var myEmail: String ? = null
-    var p1Ready: Boolean ? = null
-    var p2Ready: Boolean ? = null
-    var host: Boolean = false
-    var numbers: MutableList<Int> ? = null
+    var req : Boolean = false
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility =
             View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         setContentView(R.layout.activity_user)
-        var b: Bundle? = intent.extras
+        val b: Bundle? = intent.extras
         myEmail = b!!.getString("email")
-        incomingCalls()
         val mainText = main_text
         mainText.text = myEmail
-    }
 
-    fun requestHandler(view: View) {
-        val userEmail = main_email.text.toString()
-        myRef.child("Users").child(splitString(userEmail)).child("Request").push().setValue(myEmail)
-        myRef.child("Users").child(splitString(myEmail.toString())).child("Host").setValue(true)
-        myRef.child("Users").child(splitString(myEmail.toString())).child("Ready").setValue(true)
+        val accText = main_ac_email
+        val request : View = findViewById(R.id.request_btn)
+        val accept : View = findViewById(R.id.accept_btn)
 
-    }
-    fun acceptHandler(view: View) {
-        val userEmail = main_email.text.toString()
-        Log.d("ACCEPT HANDLER", "IN ACCESS")
-        myRef.child("Users").child(splitString(myEmail.toString())).child("Request").push().setValue(userEmail)
+
+        val intent = Intent(this, QuizActivity::class.java)
+
+        myRef.child("Users").child(splitString(myEmail.toString())).child("Ready").setValue(false)
+        myRef.child("Users").child(splitString(myEmail.toString())).child("Request").setValue("")
         myRef.child("Users").child(splitString(myEmail.toString())).child("Host").setValue(false)
-        myRef.child("Users").child(splitString(myEmail.toString())).child("Ready").setValue(true)
+
+        myRef.child("Users").child(splitString(myEmail.toString())).child("Request").addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                accText.text = snapshot.value.toString()
+            }
+
+            override fun onCancelled(error: DatabaseError) {}
+        })
+
+        request.setOnClickListener(){
+            val userEmail = main_rq_email.text.toString()
+            myRef.child("Users").addListenerForSingleValueEvent(object : ValueEventListener{
+                override fun onDataChange(snapshot: DataSnapshot) {
+                    for(i in snapshot.children)
+                    {
+                        if(i.key.toString() == splitString(userEmail))
+                        {
+                            myRef.child("Users").child(splitString(myEmail.toString())).child("Ready").setValue(true)
+                            myRef.child("Users").child(splitString(userEmail)).child("Request").setValue(splitString(myEmail.toString()))
+                            req = true
+                        }
+                    }
+                    if(req){
+                        Toast.makeText(applicationContext, "Request Sent", Toast.LENGTH_SHORT).show()
+                        matchStart(userEmail, intent)
+                    }
+                    else{
+                        Toast.makeText(applicationContext, "Request Failed", Toast.LENGTH_SHORT).show()
+                    }
+                }
+
+                override fun onCancelled(error: DatabaseError) {}
+            })
+        }
+
+        accept.setOnClickListener(){
+            val userEmail = accText.text.toString()
+            if(userEmail != "")
+            {
+                myRef.child("Users").child(splitString(myEmail.toString())).child("Ready").setValue(true)
+                startActivity(intent)
+            }
+        }
     }
 
-
-
-    fun startHandler(view: View) {
-        var p1ready = false
-        var p2ready = false
-        val userEmail = main_email.text.toString()
-        myRef.child("Users").child(splitString(myEmail.toString())).child("Host").get().addOnSuccessListener { host ->
-            if (host.value as Boolean){
-                numbers = randomCreater()
+    private  fun matchStart(userEmail : String, it : Intent){
+        myRef.child("Users").child(splitString(userEmail)).child("Ready").addValueEventListener(object : ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+                if(snapshot.value as Boolean)
+                {
+                    Toast.makeText(applicationContext, "Request Accepted", Toast.LENGTH_SHORT).show()
+                    startActivity(it)
+                }
             }
 
-            myRef.child("Users").child(splitString(myEmail.toString())).child("Ready").get().addOnSuccessListener {
-                p1ready = it.value as Boolean
-                Log.d("START P1", p1ready.toString())
-            }
-            myRef.child("Users").child(splitString(userEmail)).child("Ready").get().addOnSuccessListener {
-                p2ready = it.value as Boolean
-                Log.d("START P2", p2ready.toString())
-            }
-
-            val intent = Intent(this, QuizActivity::class.java)
-            startActivity(intent)
-        }
+            override fun onCancelled(error: DatabaseError) {}
+        })
     }
 
     private fun splitString(str: String): String{
@@ -78,30 +101,6 @@ class UserActivity : AppCompatActivity() {
         return splitString[0]
     }
 
-    private fun incomingCalls(){
-        myRef.child("Users").child(splitString(myEmail.toString())).child("Request")
-                .addValueEventListener(object: ValueEventListener {
-                    override fun onDataChange(snapshot: DataSnapshot) {
-                        try {
-                            var td = snapshot.value as HashMap<String, Any>
-                            if (td != null){
-                                val value: String
-                                for (key in td.keys){
-                                    value = td[key] as String
-                                    main_email.setText(value)
-                                    myRef.child("Users").child(splitString(myEmail.toString())).child("Request").setValue(true)
-                                    break
-                                }
-                            }
-                        }catch (ex: Exception){
-
-                        }
-                    }
-
-                    override fun onCancelled(error: DatabaseError) {
-                    }
-                })
-    }
 
     private fun randomCreater(): MutableList<Int>{
         val numbers = mutableListOf<Int>()
@@ -120,6 +119,4 @@ class UserActivity : AppCompatActivity() {
         }
         return numbers
     }
-
-
 }
