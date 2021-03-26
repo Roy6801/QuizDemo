@@ -1,10 +1,11 @@
-package com.demo.quizdemo
+package com.example.androquiz
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.CountDownTimer
 import android.os.Handler
+import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.TextView
@@ -38,7 +39,7 @@ class QuizActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         setContentView(R.layout.activity_quiz)
         val b: Bundle? = intent.extras
         host = b!!.getBoolean("host")
@@ -50,6 +51,15 @@ class QuizActivity : AppCompatActivity() {
         buttonD = optionD
         questionTxt = question
         timerTxt = timer
+        total = 0
+        score = 0
+        changeQuestion = 0
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        Log.d("TOTAL AFTER MAIN RESET", total.toString())
 
         if (host == true) {
             roomName = myUserName + opponentUserName
@@ -72,7 +82,11 @@ class QuizActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         countDownTimer.cancel()
                         total++
+                        if (total > 5){
+                            myRef.removeEventListener(this)
+                        }
                         updateQuestion()
+
                     }
 
                     override fun onCancelled(error: DatabaseError) {}
@@ -82,6 +96,9 @@ class QuizActivity : AppCompatActivity() {
                     override fun onDataChange(snapshot: DataSnapshot) {
                         countDownTimer.cancel()
                         total++
+                        if (total > 5){
+                            myRef.removeEventListener(this)
+                        }
                         updateQuestion()
                     }
 
@@ -92,6 +109,7 @@ class QuizActivity : AppCompatActivity() {
     }
 
     private fun updateQuestion() {
+        Log.d("TOTAL IN UPDATE", total.toString())
         if (total > 5) {
             if (host == true) {
                 myRef.child("Match").child(roomName).child("p1Score").setValue(score)
@@ -103,7 +121,9 @@ class QuizActivity : AppCompatActivity() {
                 intent.putExtra("roomName", roomName)
                 intent.putExtra("host", host)
                 startActivity(intent)
-                finish()
+                Handler().postDelayed({
+                    finish()
+                }, 300)
             }, 1000)
         } else {
             reverseTimer(15, timerTxt)
@@ -224,8 +244,9 @@ class QuizActivity : AppCompatActivity() {
         }
     }
 
+
+
     private fun reverseTimer(seconds: Int, tv: TextView) {
-        //TODO: Check why 1000+1000
         countDownTimer = object : CountDownTimer((seconds * 1000).toLong(), 1000) {
             override fun onTick(millisUntilFinished: Long) {
                 var second = millisUntilFinished.toInt() / 1000

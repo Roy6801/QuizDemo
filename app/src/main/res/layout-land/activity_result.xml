@@ -40,6 +40,21 @@
         android:visibility="gone"/>
 
     <TextView
+        android:id="@+id/tie"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="#4287f5"
+        android:text="IT'S A TIE"
+        android:textSize="40sp"
+        android:textStyle="bold"
+        android:textAlignment="center"
+        android:textColor="#174f02"
+        android:layout_margin="10dp"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center"
+        android:visibility="gone"/>
+
+    <TextView
         android:id="@+id/p1_score"
         android:layout_width="match_parent"
         android:layout_height="80dp"

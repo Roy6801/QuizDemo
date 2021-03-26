@@ -1,4 +1,4 @@
-package com.demo.quizdemo
+package com.example.androquiz
 
 import org.junit.Test
 

@@ -15,18 +15,18 @@
         android:layout_height="wrap_content"
         android:gravity="center">
 
-    <TextView
-        android:id="@+id/question"
-        android:text="Question"
-        android:textSize="22sp"
-        android:textStyle="bold"
-        android:textColor="#ffffff"
-        android:layout_width="0dp"
-        android:layout_weight="1"
-        android:layout_height="wrap_content"
-        android:background="@drawable/navy_blue"
-        android:layout_margin="10dp"
-        android:padding="10dp"/>
+        <TextView
+            android:id="@+id/question"
+            android:text="Question"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/navy_blue"
+            android:layout_margin="10dp"
+            android:padding="10dp"/>
 
         <TextView
             android:id="@+id/timer"
@@ -55,29 +55,29 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/optionA"
-        android:text="Option A"
-        android:textSize="15sp"
-        android:textColor="#362804"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gold"
-        android:layout_margin="10dp"
-        android:padding="10dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/optionA"
+                android:text="Option A"
+                android:textSize="15sp"
+                android:textColor="#362804"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gold"
+                android:layout_margin="10dp"
+                android:padding="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/optionB"
-        android:text="Option B"
-        android:textSize="15sp"
-        android:textColor="#362804"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gold"
-        android:layout_margin="10dp"
-        android:padding="10dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/optionB"
+                android:text="Option B"
+                android:textSize="15sp"
+                android:textColor="#362804"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gold"
+                android:layout_margin="10dp"
+                android:padding="10dp"/>
 
         </LinearLayout>
 
@@ -87,29 +87,29 @@
             android:layout_weight="1"
             android:orientation="vertical">
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/optionC"
-        android:text="Option C"
-        android:textSize="15sp"
-        android:textColor="#362804"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gold"
-        android:layout_margin="10dp"
-        android:padding="10dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/optionC"
+                android:text="Option C"
+                android:textSize="15sp"
+                android:textColor="#362804"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gold"
+                android:layout_margin="10dp"
+                android:padding="10dp"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/optionD"
-        android:text="Option D"
-        android:textSize="15sp"
-        android:textColor="#362804"
-        android:textStyle="bold"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@drawable/gold"
-        android:layout_margin="10dp"
-        android:padding="10dp"/>
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/optionD"
+                android:text="Option D"
+                android:textSize="15sp"
+                android:textColor="#362804"
+                android:textStyle="bold"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/gold"
+                android:layout_margin="10dp"
+                android:padding="10dp"/>
 
         </LinearLayout>
 
