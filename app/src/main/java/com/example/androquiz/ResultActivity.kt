@@ -1,11 +1,10 @@
-package com.demo.quizdemo
+package com.example.androquiz
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
 import android.view.View
-import android.widget.Button
 import android.widget.TextView
 import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_result.*
@@ -16,7 +15,6 @@ class ResultActivity : AppCompatActivity() {
     lateinit var  tieTxt: TextView
     lateinit var  p1Score: TextView
     lateinit var  p2Score: TextView
-    lateinit var  backBtn: Button
     var p1: Int = 0
     var p2: Int = 0
     var host: Boolean ? = null
@@ -28,7 +26,7 @@ class ResultActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.decorView.systemUiVisibility =
-                View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
+            View.SYSTEM_UI_FLAG_HIDE_NAVIGATION or View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY
         setContentView(R.layout.activity_result)
         val b: Bundle ? = intent.extras
         host = b!!.getBoolean("host")
@@ -70,7 +68,7 @@ class ResultActivity : AppCompatActivity() {
                 p1Score.text = "Your Score: $p2"
                 p2Score.text = "Opponent's Score: $p1"
             }
-        }, 500)
+        }, 1000)
     }
 
     fun backHandler(view: View) {
